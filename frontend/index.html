@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Flow Decentralized Application (DApp)</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fcfbf7;
+            color: #2b2a27;
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .badge {
+            background-color: #e2f0d9;
+            color: #385723;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .section {
+            background-color: #ffffff;
+            border: 1px solid #eae8e1;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(43, 42, 39, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 10px 25px rgba(43, 42, 39, 0.06);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1e293b;
+            border-bottom: 1px solid #eae8e1;
+            padding-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6e6d6a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, select, textarea {
+            background-color: #faf9f5;
+            border: 1px solid #eae8e1;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 14px;
+            color: #2b2a27;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #1e40af;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .alert-private {
+            background-color: #fffbeb;
+            border: 1px solid #fef3c7;
+            color: #b45309;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        button {
+            background-color: #1e40af !important;
+            color: #ffffff !important;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #1d4ed8 !important;
+            transform: translateY(-1px);
+        }
+
+        .btn-query {
+            background-color: #b45309 !important;
+        }
+
+        .btn-query:hover {
+            background-color: #d97706 !important;
+        }
+
+        .log-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #6e6d6a;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .response-box {
+            background-color: #111827 !important;
+            color: #4ade80 !important;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Asset Flow Decentralized Application (DApp)</h1>
+        <div class="badge">Enterprise Ledger | Aesthetic Simulation</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Multi-Org Network Setup (2 Org, 1 Raft Orderer)</div>
+        <div class="grid">
+            <div class="form-group">
+                <label>Client Identity MSP</label>
+                <select id="clientOrg">
+                    <option value="Org1">Org1 MSP (Supplier / Manufacturer)</option>
+                    <option value="Org2">Org2 MSP (Distributor / Logistics)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Target Peer Node</label>
+                <select id="targetPeer">
+                    <option value="peer0.org1">peer0.org1.kelompokkita.com</option>
+                    <option value="peer1.org1">peer1.org1.kelompokkita.com</option>
+                    <option value="peer0.org2">peer0.org2.kelompokkita.com</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Blockchain Actions: CreateAsset() & Private Data Collection</div>
+        <div class="alert-private">
+            <span>🔒</span> 
+            <span><strong>Private Data Layer:</strong> Nilai "Harga Beli" akan diamankan via Transient Map sehingga terisolasi dari peer Org2.</span>
+        </div>
+        <div class="grid">
+            <div class="form-group">
+                <label>Asset ID</label>
+                <input type="text" id="assetId" placeholder="e.g., asset-001">
+            </div>
+            <div class="form-group">
+                <label>Logistics Name</label>
+                <input type="text" id="assetName" placeholder="e.g., Raw Coffee Beans">
+            </div>
+            <div class="form-group">
+                <label>Initial Location</label>
+                <input type="text" id="assetLocation" placeholder="e.g., Bandung Hub">
+            </div>
+            <div class="form-group">
+                <label>Private Price ($)</label>
+                <input type="number" id="privatePrice" placeholder="e.g., 18500">
+            </div>
+        </div>
+        <button onclick="simulateCreateAsset()">Execute CreateAsset()</button>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Chaincode Operations: TransferAsset()</div>
+        <div class="grid">
+            <div class="form-group">
+                <label>Target Asset ID</label>
+                <input type="text" id="transferId" placeholder="e.g., asset-001">
+            </div>
+            <div class="form-group">
+                <label>New Custody / Location</label>
+                <input type="text" id="newLocation" placeholder="e.g., Jakarta Distribution Center">
+            </div>
+        </div>
+        <button onclick="simulateTransferAsset()">Execute TransferAsset()</button>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Advanced Queries & CouchDB History</div>
+        <div class="grid">
+            <div class="form-group">
+                <label>Audit Trail (GetAssetHistory)</label>
+                <input type="text" id="historyId" placeholder="e.g., asset-001">
+                <button class="btn-query" onclick="simulateGetAssetHistory()">Pull Audit Trail History</button>
+            </div>
+            <div class="form-group">
+                <label>CouchDB Rich Query (JSON Selector)</label>
+                <textarea id="jsonQuery" rows="1">{"selector": {"location": "Jakarta Distribution Center"}}</textarea>
+                <button class="btn-query" onclick="simulateRichQuery()">Run Rich Query Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="log-title">End-to-End Output Log</div>
+    <div class="response-box" id="apiResponse">[System Log] Web interface loaded successfully. Ready for QA testing.</div>
+</div>
+
+<script>
+    function simulateCreateAsset() {
+        const id = document.getElementById('assetId').value || 'asset-001';
+        const name = document.getElementById('assetName').value || 'Raw Coffee Beans';
+        const loc = document.getElementById('assetLocation').value || 'Bandung Hub';
+        const org = document.getElementById('clientOrg').value;
+        const price = document.getElementById('privatePrice').value || '18500';
+        
+        document.getElementById('apiResponse').innerText = 
+            `[QA LOG - SUCCESS] ${new Date().toLocaleTimeString()}\n` +
+            `Method: CreateAsset(ctx, "${id}", "${name}", "${loc}")\n` +
+            `Invoked by: ${org} Client Identity via ${document.getElementById('targetPeer').value}\n` +
+            `CouchDB Status: World state committed to key [${id}]\n` +
+            `Private Collection: Transient hash generated for Price ($${price}). Block validated.`;
+    }
+
+    function simulateTransferAsset() {
+        const id = document.getElementById('transferId').value || 'asset-001';
+        const loc = document.getElementById('newLocation').value || 'Jakarta Distribution Center';
+        
+        document.getElementById('apiResponse').innerText = 
+            `[QA LOG - SUCCESS] ${new Date().toLocaleTimeString()}\n` +
+            `Method: TransferAsset(ctx, "${id}", "${loc}")\n` +
+            `State Transition: Asset ownership & custody updated.\n` +
+            `Consensus: Raft Orderer successfully synchronized state across all peer node clusters.`;
+    }
+
+    function simulateGetAssetHistory() {
+        const id = document.getElementById('historyId').value || 'asset-001';
+        document.getElementById('apiResponse').innerText = 
+            `[QA LOG - AUDIT TRAIL] ${new Date().toLocaleTimeString()}\n` +
+            `Method: GetAssetHistory(ctx, "${id}")\n` +
+            `Parsing historical blocks for keys from CouchDB ledger modification logs...\n\n` +
+            `• [Tx_01] Action: INITIALIZE - Target Asset: [${id}] - Status: Verified\n` +
+            `• [Tx_02] Action: TRANSFER   - Target Asset: [${id}] - Status: Synchronized`;
+    }
+
+    function simulateRichQuery() {
+        const query = document.getElementById('jsonQuery').value;
+        document.getElementById('apiResponse').innerText = 
+            `[QA LOG - COUCHDB RICH QUERY] ${new Date().toLocaleTimeString()}\n` +
+            `Payload Selector: ${query}\n` +
+            `Index Scan Status: [200 OK]\n` +
+            `Result: Ad-hoc query matched perfectly with CouchDB JSON document attributes.`;
+    }
+</script>
+
+</body>
+</html>
